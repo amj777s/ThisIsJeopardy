@@ -3,9 +3,8 @@
 import dashboard from '../dashboard.module.css';
 import Image from 'next/image';
 import heart from '../../../public/heart.png';
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import {useAppSelector } from '@/redux/hooks';
 import { selectHearts, selectLevel, selectScore, selectSubLevel } from '@/redux/slices/gameDataSlice';
-import { addLife } from '@/redux/slices/gameDataSlice';
 
 
 export default function GameDetails() {
@@ -14,7 +13,6 @@ export default function GameDetails() {
     const level = useAppSelector(selectLevel);
     const sublevel = useAppSelector(selectSubLevel);
     const score = useAppSelector(selectScore);
-    const dispatch = useAppDispatch();
 
     return (
         <div className={dashboard.gameDetails}>

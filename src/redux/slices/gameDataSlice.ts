@@ -1,6 +1,5 @@
 import {createSlice, AsyncThunk, PayloadAction, createAsyncThunk} from '@reduxjs/toolkit';
 import { RootState } from '../store';
-import testData, { fullTestData } from './TestData';
 import { GameState, RoundData } from '@/types';
 
 

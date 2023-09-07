@@ -9,7 +9,7 @@ export async function GET(
     req: Request, // Has to be included to access params
    { params }: { params: { level: string } }
 ) {
-    console.log(params);
+
     let level:number = Number(params.level) - 1; // subtract one to account for array index starting at zero
     // If a player makes it to maxium score continues to pull from highest questions for future rounds
    
