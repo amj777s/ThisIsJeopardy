@@ -38,8 +38,7 @@ export async function GET(
     // Fix to handle other types of errors
     // Need to catch 500 Error to ask to try and reload again
     typeof data === 'object'? status = 200 : status = 204;
-     
-    console.log(data);
+    
     return NextResponse.json(
         data,
         {status: status}
