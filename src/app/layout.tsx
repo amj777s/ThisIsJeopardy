@@ -19,7 +19,7 @@ export default function RootLayout({
     <Providers>
       <html lang="en">
         <body className={inter.className}>
-          <header>FreeBird</header>
+          <header>This is Jeopardy-------------------------- High-Scores</header>
           {children}
         </body>
       </html>

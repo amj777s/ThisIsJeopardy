@@ -16,13 +16,6 @@ export default function GameDetails() {
     const score = useAppSelector(selectScore);
     const dispatch = useAppDispatch();
 
-
-    const updateLife = (e:React.MouseEvent<HTMLButtonElement>):void => {
-        e.preventDefault();
-        dispatch(addLife());
-
-    }
-
     return (
         <div className={dashboard.gameDetails}>
             <h2>Lives</h2>

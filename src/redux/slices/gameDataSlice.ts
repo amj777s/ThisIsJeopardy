@@ -10,22 +10,34 @@ const initState: GameState = {
         score: 0,
         level: 1,
         sublevel: 1,
-        playing: 'waiting'
+        playing: 'waiting'    
 };
 
+// Update to handle
 export const getRoundData = createAsyncThunk(
     'gameData/getRoundData',
-    // async(level: number) => {
-    //     const response= await fetch(`/jeopardy/${level}`);
-    //     const json: RoundData[] = await response.json();
 
-    //     return json;
-    // }
     async(level: number) => {
-        let data:  RoundData[] = await new Promise(resolve => setTimeout(()=> resolve(fullTestData[level]), 3000));
-        return data;
+        const response: Response = await fetch(`/api/jeopardy/level/${level}`)
+        if(response.ok){
+            const data: RoundData[] = await response.json();
+            return data;
+        }
+
     }
 );
+
+// export const getApi = createAsyncThunk(
+//     'gameData/getApi',
+//     async(level: number) => {
+//         const response: Response = await fetch(`/api/jeopardy/level/${level}`);
+//         if(response.ok) {
+//             const data: RoundData[] = await response.json();
+//             console.log(data);
+//         }
+
+//     }
+// )
 
 const options =  {
     name: 'gameData',
@@ -75,11 +87,13 @@ const options =  {
     // Find solution for builder type
     extraReducers: (builder:any) => {
         builder.addCase(getRoundData.pending, (state:GameState,) => {
-         
+            
         });
+        
         builder.addCase(getRoundData.fulfilled, (state:GameState, action: PayloadAction<RoundData[]>) => {
             state.roundData = action.payload;
         });
+        
     }
 };
 
