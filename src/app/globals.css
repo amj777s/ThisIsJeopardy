@@ -11,16 +11,21 @@ html {
   font-size: 16px;
   background-image: url('../../public/dashboard_background.jpg');
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat:repeat;
   background-size: cover;
-  min-height: 100vh;
+  height: 100vh;
+
 }
 
-html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  max-width: 100%;
+  padding: 20px;
+  gap: 5vh;
   color: #f9fdfd ;
+  min-height: 100%;
 }
 
 header {
@@ -30,7 +35,55 @@ header {
   background-color: #0e131a;
   padding: 2vh;
   width: 90%;
-  margin: 5vh auto;
+  margin: 0 auto;
+}
+
+/* STYLERS */
+.white {
+  color: #fcfcfa;
+}
+
+
+.active {
+  color: #1088f8;
+  
+}
+
+.current {
+  background-color: lime;
+ }
+  
+
+.activeButton {
+  color: #fcfcfa;
+  background-color: #1088f8;
+  transition: all 0.5s linear;
+  box-shadow: 0 9px #6bb7ff;
+}
+
+.activeButton:hover{
+  background-color: #0e6ec9;
+  transition: background-color 0.25s linear;
+}
+
+.activeButton:active {
+  transform: translateY(9px);
+  box-shadow: 0 0;
+}
+
+.disabled {
+  background-color: gray;
+  color:  #fcfcfa;
+}
+
+.blueBg {
+  background-color: #1088f8;
+}
+
+@media only screen and (max-width: 450px) {
+  header {
+    font-size: 1.5rem;
+  }
 }
 
 

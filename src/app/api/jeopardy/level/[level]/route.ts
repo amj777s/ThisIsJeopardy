@@ -18,20 +18,7 @@ export async function GET(
     }
    const roundValue: number = queryScores[level];
    
-    const data: object | null = await prisma.game.findMany({
-    
-        select: {
-            question: true,
-            answer: true,
-            score: true,
-            category: true
-        },
-        where: {
-            score: roundValue
-        },
-        take: 5
-        
-    });
+    const data: object | null = await prisma.$queryRaw`SELECT * FROM game WHERE score = ${roundValue} ORDER BY RANDOM() LIMIT 5`;
     
     let status: number;
 

@@ -1,10 +1,10 @@
 import {createSlice, AsyncThunk, PayloadAction, createAsyncThunk} from '@reduxjs/toolkit';
 import { RootState } from '../store';
-import { GameState, RoundData } from '@/types';
+import { GameState, RestartState, RoundData } from '@/types';
 
 
 const initState: GameState = {
-    hearts: 3,
+        hearts: 3,
         roundData: [], // change back to empty after test
         score: 0,
         level: 1,
@@ -25,18 +25,6 @@ export const getRoundData = createAsyncThunk(
 
     }
 );
-
-// export const getApi = createAsyncThunk(
-//     'gameData/getApi',
-//     async(level: number) => {
-//         const response: Response = await fetch(`/api/jeopardy/level/${level}`);
-//         if(response.ok) {
-//             const data: RoundData[] = await response.json();
-//             console.log(data);
-//         }
-
-//     }
-// )
 
 const options =  {
     name: 'gameData',
@@ -80,6 +68,17 @@ const options =  {
 
         endGame: (state: GameState) => {
             state.playing = 'over';
+        },
+
+        resetGame: (state: GameState, action: PayloadAction<RestartState>) => {
+            // Figure out why spread operator wasnt working
+            const{hearts,level,sublevel,playing,score} = action.payload;
+            state.hearts = hearts;
+            state.level = level;
+            state.sublevel = sublevel;
+            state.playing = playing;
+            state.score = score;
+           
         }
     },
 
@@ -97,7 +96,7 @@ const options =  {
 };
 
 const gameDataSlice = createSlice(options);
-export const {subtractLife, addLife, updateScore, endGame, startGame, incrementSubLevel, resetSubLevel, incrementLevel} = gameDataSlice.actions;
+export const {subtractLife, addLife, updateScore, endGame, startGame, resetGame,incrementSubLevel, resetSubLevel, incrementLevel} = gameDataSlice.actions;
 export const selectHearts = (state:RootState) => state.gameData.hearts;
 export const selectScore = (state:RootState) => state.gameData.score;
 export const selectLevel = (state:RootState) => state.gameData.level;

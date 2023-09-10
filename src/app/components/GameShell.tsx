@@ -1,6 +1,7 @@
 // TODO: useEffect to track game status 
 'use client'
 import dashboard from '../dashboard.module.css'
+import '../../app/globals.css'
 import React from 'react';
 import {
     selectGameStatus,
@@ -17,13 +18,18 @@ import {
     getRoundData
 } from '@/redux/slices/gameDataSlice';
 import { useAppSelector, useAppDispatch } from '@/redux/hooks';
+import GameOver from './Gameover';
 
 
 
 export default function GameShell() {
 
-    const welcomeMessage: string = 'Welcome to the Jeopardy trivia game. Where your knowledge will be tested on all categories of jeopardy from the very beginning.';
-    const [userInput, setUserInput] = React.useState<string>('')
+    const welcomeMessage: string = 'Welcome to Jeopardy! You have three chances to test your knowledge in progressively harder rounds. Each Round is composed of\
+                                    5 Questions and there is not time limit. There are over 200,000 questions that span the history of Jeopardy so chances are you will\
+                                    not see the same question twice.Can you top the leaderboard? Goodluck! Make sure to create an account first if you want to save your score to\
+                                    the leaderboard.';
+
+    const [userInput, setUserInput] = React.useState<string>('');
 
     const dispatch = useAppDispatch();
 
@@ -36,6 +42,7 @@ export default function GameShell() {
     // Use to implement game over function
     React.useEffect(() => {
         if (!hearts) {
+            setUserInput('');
             dispatch(endGame());
         }
     }, [hearts]);
@@ -71,19 +78,14 @@ export default function GameShell() {
         dispatch(incrementSubLevel());
     }
 
-    // const handleApi = (e: React.MouseEvent<HTMLButtonElement>): void => {
-    //     e.preventDefault();
-    //     dispatch(getApi(3));
-    // }
-
 
     const handleCheckAnswer = (e: React.KeyboardEvent<HTMLInputElement>): void => {
 
-        if (e.key === 'Enter') {
-            const { score, answer } = roundData[sublevel - 1]; ///make sure answer is already foramtted to lowerCase on backend
-            answer.includes(userInput) ? dispatch(updateScore(score)) : dispatch(subtractLife());
+        if (e.key === 'Enter' && userInput) {
+            const { score, answer } = roundData[sublevel - 1];
+             const formattedAnswer = answer.toLowerCase().trim();
+            formattedAnswer.includes(userInput) ? dispatch(updateScore(score)) : dispatch(subtractLife());
             // Used so that score level doesnt increment if game ends
-
             checkAndUpdateLevel();
 
         }
@@ -94,24 +96,28 @@ export default function GameShell() {
         <div className={dashboard.questionSegment}>
 
             {/* Used to begin the game*/}
+
             {gameStatus === 'waiting' && <>
                 <h2>{welcomeMessage}</h2>
-                <button className={roundData.length === 0 ? dashboard.disabled : dashboard.activeButton} onClick={handleGameStatus} disabled={roundData.length === 0}> Begin Game</button>
-                {/* <button onClick={handleApi}>Get Api</button> */}
+                <button 
+                    className={roundData.length === 0 ? 'disabled' : 'activeButton'}
+                    onClick={handleGameStatus}
+                    disabled={roundData.length === 0}> Begin Game</button>
             </>}
-            {gameStatus === 'playing' && <>
+
+            {(gameStatus === 'playing' && roundData) && <>
                 <p>Category: {roundData[sublevel - 1].category}</p>
-                <h2>{roundData[sublevel - 1].question}</h2>
+                <h3>{roundData[sublevel - 1].question}</h3>
                 <input type='text'
                     onChange={handleUserInput}
-                    onKeyDown={handleCheckAnswer}
+                    onKeyUp={handleCheckAnswer}
                     placeholder='Enter Answer Here...'
                     disabled={hearts === 0}
                 />
             </>}
 
             {gameStatus === 'over' && <>
-                <h1>game over</h1>
+                <GameOver />
             </>}
         </div>
 

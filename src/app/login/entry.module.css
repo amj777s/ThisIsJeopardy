@@ -1,0 +1,56 @@
+
+.signupForm {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    min-height: 50vh;
+    margin: 0   auto;
+    padding: 30px;
+    border-radius: 15px;
+    gap: 15px;
+    background-color: #0e131a;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+}
+
+.signupForm > * {
+    margin: 0 auto;
+    font-size: 2rem;
+    font-weight: 400;
+    width: 75%;
+    border-radius: 10px;
+}
+.signupForm > h2 {
+    margin-bottom: 30px;
+}
+
+.signupForm > label{
+    font-size: 1rem;
+    /* use to have labels sit on inputs (effective margin is gap + margin)*/
+    margin-bottom: -12px; 
+}
+
+.signupForm > label{
+    font-size: 1rem;
+    /* use to have labels sit on inputs (effective margin is gap + margin)*/
+    margin-bottom: -12px; 
+}
+
+.signupForm > p {
+    font-size: 1rem;
+    text-align: center;
+}
+
+.signupForm > ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: 1rem;
+}
+
+.signupForm>ul >li {
+    width: 30%;
+    list-style: circle;
+
+    
+}

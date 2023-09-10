@@ -1,3 +1,5 @@
+
+
 .dashboardFrame {
   display: flex;
   flex-direction: row;
@@ -5,19 +7,19 @@
   align-items: center;
   justify-content: space-around;
   width: 90%;
-  height: 75vh;
+  min-height: 75vh;
   margin: 0 auto;
-  gap: 20px;
-  padding: 2vw;
   border-radius: 30px ;
   background-color: #0e131a;
   
 }
 
+/* GAME SHELL COMPONENT */
+
 .questionSegment {
   display: flex;
   width: 75%;
-  height: 60vh;
+  min-height: 60vh;
   padding: 10px;
   flex-direction: column;
   flex-wrap: wrap;
@@ -29,7 +31,7 @@
 }
 
 .questionSegment > * {
-  font-size: 2.5rem;
+  font-size: 2rem;
   max-width: 100%;
   border-radius: 30px;
   padding: 10px;
@@ -41,55 +43,73 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 60vh;
+  min-height: 60vh;
   width: 20%;
-  gap: 10px;
   background-color: #272d35;
+  padding: 10px;
   border-radius: 30px;
   text-align: center;
-}
-
-.current {
- background-color: lime;
 }
 
 .hearts {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 20px;
   width: 100%;
-
+  gap: 2%;
 }
 
-.white {
-  color: #fcfcfa;
+.hearts > * {
+  width: 30%;
+  max-width: 50px;
+  height: auto;
+ 
 }
 
+.levels {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 
-.active {
-  color: #1088f8;
-  
-}
-
-.activeButton {
-  color: #fcfcfa;
-  background-color: #1088f8;
-  transition: all 1s linear;
-}
-
-.disabled {
-  background-color: gray;
-  color:  #fcfcfa;
-}
-
-.blueBg {
-  background-color: #1088f8;
 }
 
 
 
 
-
-
+ /* FOR PHONES Samsung Galazy s22+ and Smaller */
+@media only screen and (max-width: 450px) {
+  .dashboardFrame {
+    flex-direction: column;
+    flex-flow: column-reverse;
+    padding:  20px;
+    min-height: 0;
+    gap: 20px;
+    
+  }
+  .gameDetails {
+    width: 100%;
+    min-height: 0;
+    
+  }
+  .questionSegment {
+    width: 100%;
+    min-height: 0;
+  }
+  .questionSegment > * {
+    font-size: 1.5rem;
+  }
+  .levels {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+  }
+  .levels > * {
+    font-size: 1rem;
+  }
+  .levels > h2 {
+    width: 100%;
+    font-size: 1.5rem;
+  }
+}
 

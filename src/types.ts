@@ -1,12 +1,16 @@
 
-export interface  GameState {
+export interface  RestartState {
     hearts: number,
-    roundData: RoundData []
     score: number,
     level: number,
     sublevel: number,
     playing: gameProgress,
 };
+
+export interface  GameState extends RestartState {
+    roundData: RoundData []
+};
+
 
 export type RoundData = {
     question: string,
@@ -15,7 +19,7 @@ export type RoundData = {
     answer: string
 }
 
-// used to convert level into query searches. Possibly  move to Game Logic.ts or Route.ts
+// Used to convert level into query searches. Possibly  move to Game Logic.ts or Route.ts
 export const queryScores: number[] = [
     200,
     400,
@@ -26,4 +30,6 @@ export const queryScores: number[] = [
     2000
 ];
 
+
+// Used on root page to conditionally render game component
 export type gameProgress = 'waiting' |'playing' | 'over';
