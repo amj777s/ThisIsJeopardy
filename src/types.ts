@@ -19,6 +19,7 @@ export type RoundData = {
     answer: string
 }
 
+
 // Used to convert level into query searches. Possibly  move to Game Logic.ts or Route.ts
 export const queryScores: number[] = [
     200,

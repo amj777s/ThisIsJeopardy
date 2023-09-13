@@ -49,8 +49,16 @@ header {
   
 }
 
+.error {
+  color: red;
+}
+
 .current {
   background-color: lime;
+ }
+
+ .success {
+  color: green;
  }
   
 
@@ -71,8 +79,9 @@ header {
   box-shadow: 0 0;
 }
 
-.disabled {
-  background-color: gray;
+.activeButton:disabled {
+  background-color: rgb(84, 83, 83);  
+  box-shadow: 0 9px #939394;
   color:  #fcfcfa;
 }
 
