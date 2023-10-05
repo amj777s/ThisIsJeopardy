@@ -31,6 +31,13 @@ export const queryScores: number[] = [
     2000
 ];
 
+export type ScoreData = {
+    id: number,
+    score: number,
+    username: string,
+    created: Date
+}
+
 
 // Used on root page to conditionally render game component
 export type gameProgress = 'waiting' |'playing' | 'over';

@@ -2,6 +2,12 @@ import {NextRequest, NextResponse } from "next/server";
 import prisma from "../../../../../prisma/prisma";
 import { generatePasswordHash } from "@/app/utils/signupHelper";
 
+
+/**
+ * 
+ * @param req - Request object containing sign up JSON data {username, email, password}
+ * @returns - Returns a status of 201 if sucessful and an empty body
+ */
 export async function POST(
     req: NextRequest
 ){

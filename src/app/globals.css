@@ -29,14 +29,23 @@ body {
 }
 
 header {
-  text-align: center;
-  font-size: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
   border-radius: 30px;
   background-color: #0e131a;
   padding: 2vh;
   width: 90%;
   margin: 0 auto;
 }
+
+header > h1 {
+ flex-grow: 1; 
+ text-align: center;
+}
+
+
 
 /* STYLERS */
 .white {
@@ -61,7 +70,15 @@ header {
   color: green;
  }
   
+.w50-center {
+  width: 25%;
+  margin: 0 auto;
+  text-align: center;
+}
 
+.r-15 {
+  border-radius: 15px;
+}
 .activeButton {
   color: #fcfcfa;
   background-color: #1088f8;

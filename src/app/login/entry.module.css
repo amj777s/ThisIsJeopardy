@@ -1,5 +1,5 @@
 
-.signupForm {
+.signupForm, .loginForm {
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -13,31 +13,28 @@
 
 }
 
-.signupForm > * {
+.signupForm > *, .loginForm > * {
     margin: 0 auto;
     font-size: 2rem;
     font-weight: 400;
     width: 75%;
     border-radius: 10px;
 }
-.signupForm > h2 {
+.signupForm > h2, .loginForm > h2 {
     margin-bottom: 30px;
 }
 
-.signupForm > label{
+.signupForm > label, .loginForm > label{
     font-size: 1rem;
     /* use to have labels sit on inputs (effective margin is gap + margin)*/
     margin-bottom: -12px; 
 }
 
-.signupForm > label{
-    font-size: 1rem;
-    /* use to have labels sit on inputs (effective margin is gap + margin)*/
-    margin-bottom: -12px; 
+.signupForm > button, .loginForm > button {
+    width: 33%;
 }
 
-
-.signupForm > p {
+.signupForm > p, .loginForm> p {
     font-size: 1rem;
     text-align: center;
 }
@@ -53,4 +50,20 @@
 .signupForm>ul >li {
     width: 30%;
     list-style: circle inside;
+}
+
+@media only screen and (max-width: 450px)  {
+    .signupForm, .loginForm {
+        min-height: 0;
+        width: 100%;
+    }
+    
+    .signupForm > *, .loginForm > * {
+        width: 90%;
+        font-size: 1.5rem;
+    }
+    
+    .signupForm > button, .loginForm > button {
+        width: 75%;
+    }
 }

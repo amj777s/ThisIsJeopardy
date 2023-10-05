@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import '../../app/globals.css';
 import entry from '../login/entry.module.css';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 //usesrname and password need to be less than 30 characters to be accepted into db
-//TODO Fix signup button
+//TODO Fix FIX error where rounddata is undefined when redirecting from signup
 export default function SignUp() {
     const [username, setUsername] = useState('');
     const [userNameAvailable, setUserNameAvailable] = useState(true);
@@ -15,12 +17,21 @@ export default function SignUp() {
         special: false,
         length: false
     });
+    const [redirect, setRedirect] = useState(false);
+    
+    const router = useRouter();
+
+    useEffect(() => {
+        if(redirect) {
+            router.push('/');
+        }
+    })
 
     useEffect(()=> {
         checkPasswordRequirements();
     }, [password])
 
-    const checkPasswordRequirements = () => {
+    const checkPasswordRequirements = ():void => {
         const uppercasePasses = /[A-Z]/.test(password);
         const lowercasePasses = /[a-z]/.test(password);
         const specialPasses = /[!@#$%^&*]/.test(password);
@@ -35,7 +46,6 @@ export default function SignUp() {
     }
 
     const handleUsernameCheck = async (e: React.FocusEvent<HTMLInputElement>) => {
-        const potentialUsername: string = e.target.value;
 
         //Should return boolean indicating whether or not username is in db, there already taken
         const response = await fetch(`/api/jeopardy/users/${username}`);
@@ -53,7 +63,6 @@ export default function SignUp() {
 
             setUserNameAvailable(false);
         }
-
 
     }
 
@@ -99,7 +108,9 @@ export default function SignUp() {
             body: formDataJson
         });
         const data: {username: string} = await response.json();
-        console.log(`${data.username} created!`);
+
+        setRedirect(true);
+        
 
     }
 
@@ -129,7 +140,7 @@ export default function SignUp() {
             </ul>
 
             <button className='activeButton' type='submit' disabled={readyToSubmit()}>Sign Up</button>
-            <p>Already a User? <u>LOGIN</u></p>
+            <p>Already A User? <Link href={{pathname:'/login', query:{entry: 'login'}}}>Login</Link></p>
         </form>
     )
 }

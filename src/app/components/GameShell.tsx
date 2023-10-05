@@ -2,7 +2,7 @@
 'use client'
 import dashboard from '../dashboard.module.css'
 import '../../app/globals.css'
-import React from 'react';
+import React from 'react'
 import {
     selectGameStatus,
     startGame,

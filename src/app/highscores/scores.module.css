@@ -1,0 +1,31 @@
+.scoreTable{
+    
+    width: 90%;
+    max-height: 60vh;
+    overflow-y: auto;
+    margin: 0 auto;
+    min-height: 0;
+    padding: 30px;
+    border-radius: 15px;
+    list-style-type: none;
+    font-size: 1.5rem;
+    background-color: #0e131a;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+}
+
+.score{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+    
+}
+
+.score:first-child{
+    color: purple;
+}
+.score > p {
+    width: 25%;
+    text-align: center;
+}
