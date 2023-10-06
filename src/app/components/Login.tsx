@@ -16,7 +16,7 @@ export default function Login() {
         if(loggedIn) {
             router.push('/');
         }
-    }, [loggedIn])
+    }, [loggedIn, router])
 
     const handleFields = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const newValue: string = e.target.value;
@@ -61,7 +61,7 @@ export default function Login() {
             <input id='password' name='password' type='password' value={password} onChange={handleFields} required />
 
             <button className='activeButton' type='submit' disabled={!username || !password}>Login</button>
-            <p>Don't have an account?<u><Link href={{ pathname: '/login', query: { entry: 'signup' } }}>Sign Up</Link></u></p>
+            <p>Don&apos;t have an account?<u><Link href={{ pathname: '/login', query: { entry: 'signup' } }}>Sign Up</Link></u></p>
         </form>
     )
 }

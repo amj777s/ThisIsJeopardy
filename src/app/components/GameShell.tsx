@@ -1,8 +1,8 @@
 // TODO: useEffect to track game status 
 'use client'
-import dashboard from '../dashboard.module.css'
-import '../../app/globals.css'
-import React from 'react'
+import dashboard from '../dashboard.module.css';
+import '../../app/globals.css';
+import React from 'react';
 import {
     selectGameStatus,
     startGame,
@@ -45,12 +45,12 @@ export default function GameShell() {
             setUserInput('');
             dispatch(endGame());
         }
-    }, [hearts]);
+    }, [hearts, dispatch]);
 
     // Use to fetch next round info
     React.useEffect(() => {
         dispatch(getRoundData(level));
-    }, [level]);
+    }, [level, dispatch]);
 
 
     /**
