@@ -66,7 +66,7 @@ export default function GameOver() {
             {/* should only show if they are not logged in */}
             {!user && <p>Create an account to have scores saved into database.</p>}
             {!user && <p>Already A User? <Link href={{ pathname: '/login', query: { entry: 'login' } }}>Login</Link></p>}
-            {!user && <p>`Don't Have An Account?`<Link href={{ pathname: '/login', query: { entry: 'signup' } }}>Sign Up</Link></p>}
+            {!user && <p>Don'&apos;t Have An Account?<Link href={{ pathname: '/login', query: { entry: 'signup' } }}>Sign Up</Link></p>}
             <Link onClick={submitScore} href={{ pathname: '/highscores' }}>View Highscores</Link>
             <button className='activeButton' onClick={handleStartOver}>Try Again?</button>
         </>
