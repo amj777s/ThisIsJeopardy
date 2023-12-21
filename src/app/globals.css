@@ -4,7 +4,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 html {
@@ -27,6 +27,10 @@ body {
   color: #f9fdfd ;
   min-height: 100%;
 }
+hr{
+  width: 100%;
+  color: white;
+}
 
 header {
   display: flex;
@@ -43,6 +47,16 @@ header {
 header > h1 {
  flex-grow: 1; 
  text-align: center;
+}
+
+.container-no-align{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100px;
+  width: 33%;
+  margin: 0 auto;
+  justify-content: flex-start;
 }
 
 
@@ -84,6 +98,7 @@ header > h1 {
   background-color: #1088f8;
   transition: all 0.5s linear;
   box-shadow: 0 9px #6bb7ff;
+  max-width: 200px;
 }
 
 .activeButton:hover{
@@ -91,16 +106,18 @@ header > h1 {
   transition: background-color 0.25s linear;
 }
 
-.activeButton:active {
-  transform: translateY(9px);
-  box-shadow: 0 0;
-}
-
 .activeButton:disabled {
   background-color: rgb(84, 83, 83);  
   box-shadow: 0 9px #939394;
   color:  #fcfcfa;
 }
+
+
+.activeButton:active {
+  transform: translateY(9px);
+  box-shadow: 0 0;
+}
+
 
 .blueBg {
   background-color: #1088f8;
@@ -110,6 +127,66 @@ header > h1 {
   header {
     font-size: 1.5rem;
   }
+}
+
+/* ANIMATIONS */
+
+@keyframes loading {
+  0% {
+    background-color: red;
+    left: 0;
+    width: 50px;
+    height: 50px;
+  }
+  14.28% {
+    background-color: red;
+    left: 0;
+    width: 10px;
+    height: 10px;
+  }
+  28.56% {
+    background-color: orange;
+    left: 25%;
+    width: 50px;
+    height: 50px;
+  }
+  42.84% {
+    background-color: orange;
+    left: 25%;
+    width: 10px;
+    height: 10px;
+  }
+  57.12% {
+    background-color: green;
+    left: calc(75% - 50px);
+    width: 50px;
+    height: 50px;
+  }
+  71.4% {
+    background-color: green;
+    left: calc(75% - 10px);
+    width: 10px;
+    height: 10px;
+  }
+  85.68% {
+    background-color: blue;
+    left:calc(100% - 50px);
+    width: 50px;
+    height: 50px;
+  }
+  100% {
+    background-color: blue;
+    left: calc(100% - 10px);
+    width: 10px;
+    height: 10px;
+  }
+
+}
+
+.loading {
+  position: relative;
+  border-radius: 50%;
+  animation: loading 4s linear alternate infinite;
 }
 
 

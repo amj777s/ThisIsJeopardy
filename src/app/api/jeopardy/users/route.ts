@@ -18,7 +18,7 @@ export async function POST(
   const dateString= new Date();
 
   // Will return an empty array if no errors are thrown
-  const data: [] = await prisma.$queryRaw`INSERT INTO users (username, email, hash, created) VALUES(${username},${email}, ${hash}, ${dateString})`;
+  const data: [] = await prisma.$queryRaw`INSERT INTO starlight_users (username, email, hash, created) VALUES(${username},${email}, ${hash}, ${dateString})`;
   
   // Write error handler for problem with db
   if (data.length === 0){
