@@ -35,7 +35,7 @@ export default function GameOver() {
                 setScoreSubmitted(true);
             }
         }
-    }
+    };
 
     const handleStartOver = async () => {
 
@@ -56,7 +56,7 @@ export default function GameOver() {
         await submitScore();
 
 
-    }
+    };
 
 
 
@@ -70,5 +70,5 @@ export default function GameOver() {
             <Link onClick={submitScore} href={{ pathname: '/highscores' }}>View Highscores</Link>
             <button className='activeButton' onClick={handleStartOver}>Try Again?</button>
         </>
-    )
+    );
 }

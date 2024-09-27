@@ -15,7 +15,7 @@ export async function POST(
     const { username, password } = await req.json();
     // should only return an array with one or zero objects since each username is a unique value
 
-    const queryResults: { hash: string }[] = await prisma.$queryRaw`SELECT hash from users WHERE username = ${username}`;
+    const queryResults: { hash: string }[] = await prisma.$queryRaw`SELECT hash from jeopardy_users WHERE username = ${username}`;
 
     if (queryResults.length === 0) {
         return NextResponse.json({ loginAccepted: false }, { status: 200 });

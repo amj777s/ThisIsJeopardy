@@ -1,14 +1,14 @@
-'use client'
+'use client';
 import { ScoreData} from "@/types";
 import scores from './scores.module.css';
 import Link from "next/link";
-import '../../app/globals.css'
+import '../../app/globals.css';
 import useSWR from "swr";
 
 async function getHighscores() {
     const response = await fetch('/api/jeopardy/highscores');
     const highscores = await response.json();
-    return highscores
+    return highscores;
 }
 
 export default function Highscores() {
@@ -17,7 +17,7 @@ export default function Highscores() {
     console.log(screenWidth);
 
     if(error){
-        return <h1>{error}</h1>
+        return <h1>{error}</h1>;
     }
 
     if (isLoading) {
@@ -26,7 +26,7 @@ export default function Highscores() {
                 <h1>Loading...</h1>
                 <div className="loading "></div>
             </div>
-        )
+        );
 
     }
 
@@ -49,7 +49,7 @@ export default function Highscores() {
                 )}
             </div>
             
-        )
+        );
     }else{
         content= (
             <ul className={scores.scoreTable}>
@@ -70,12 +70,12 @@ export default function Highscores() {
             </ul>
             
 
-        )
+        );
     }
     return (
         <>
             {content}
             <Link className="activeButton w50-center r-15" href={{pathname: '/'}}>Back</Link>
         </>
-    )
+    );
 }

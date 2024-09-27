@@ -25,11 +25,11 @@ export default function SignUp() {
         if(redirect) {
             router.push('/');
         }
-    })
+    });
 
     useEffect(()=> {
         checkPasswordRequirements();
-    }, [password])
+    }, [password]);
 
     const checkPasswordRequirements = ():void => {
         const uppercasePasses = /[A-Z]/.test(password);
@@ -42,8 +42,8 @@ export default function SignUp() {
             lower: lowercasePasses,
             special: specialPasses,
             length: minPasses
-        })
-    }
+        });
+    };
 
     const handleUsernameCheck = async (e: React.FocusEvent<HTMLInputElement>) => {
 
@@ -58,13 +58,13 @@ export default function SignUp() {
 
             if (Object.keys(data).length === 0) {
                 setUserNameAvailable(true);
-                return
+                return;
             }
 
             setUserNameAvailable(false);
         }
 
-    }
+    };
 
     const handleFields = (e: React.ChangeEvent<HTMLInputElement>): void => {
         
@@ -87,16 +87,16 @@ export default function SignUp() {
             default:
                 break;
         }
-    }
+    };
 
     const readyToSubmit = ():boolean => {
         const passwordRequirementsMet:boolean = Object.values(passwordRequirements).every(value => value);
         if(email === emailCopy && email && username && userNameAvailable && passwordRequirementsMet){
-            return false
+            return false;
         }
 
-        return true
-    }
+        return true;
+    };
     //TODO access form data to submit to db
     const handleSignUp =  async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -112,7 +112,7 @@ export default function SignUp() {
         setRedirect(true);
         
 
-    }
+    };
 
     return (
         <form className={entry.signupForm} onSubmit={handleSignUp}>
@@ -142,5 +142,5 @@ export default function SignUp() {
             <button className='activeButton' type='submit' disabled={readyToSubmit()}>Sign Up</button>
             <p>Already A User? <Link href={{pathname:'/login', query:{entry: 'login'}}}>Login</Link></p>
         </form>
-    )
+    );
 }

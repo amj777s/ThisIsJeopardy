@@ -7,7 +7,7 @@ import {genSalt, compare, hash} from 'bcrypt-ts';
 export const generatePasswordHash = async (password: string):Promise<string>=> {
     const salt = await genSalt(10);
     return await hash(password, salt);
-}
+};
 
 
 /**
@@ -19,4 +19,4 @@ export const generatePasswordHash = async (password: string):Promise<string>=> {
 export const checkPassword = async(password: string, hash: string): Promise<boolean> => {
    
     return compare(password, hash);
-}
+};

@@ -17,7 +17,7 @@ export const getRoundData = createAsyncThunk(
     'gameData/getRoundData',
 
     async(level: number) => {
-        const response: Response = await fetch(`/api/jeopardy/level/${level}`)
+        const response: Response = await fetch(`/api/jeopardy/level/${level}`);
         if(response.ok){
             const data: RoundData[] = await response.json();
             return data;

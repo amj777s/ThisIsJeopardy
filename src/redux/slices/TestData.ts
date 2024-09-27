@@ -132,6 +132,6 @@ export const fullTestData: RoundData[][] = [
             category: 'GEOGRAPHY'
         },
     ]
-]
+];
 
 export default testData;

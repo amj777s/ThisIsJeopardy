@@ -1,5 +1,5 @@
-'use client'
-import { useParams, useSearchParams } from 'next/navigation'
+'use client';
+import { useParams, useSearchParams } from 'next/navigation';
 import SignUp from '../components/SignUp';
 import Login from '../components/Login';
 import React from 'react';
@@ -32,5 +32,5 @@ export default function EntryPage(){
         {entry === "login" && <Login/>}
         {entry === "signup" && <SignUp/>}
         </>
-    )
+    );
 }

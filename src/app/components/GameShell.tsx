@@ -1,5 +1,5 @@
 // TODO: useEffect to track game status 
-'use client'
+'use client';
 import dashboard from '../dashboard.module.css';
 import '../../app/globals.css';
 import React from 'react';
@@ -60,13 +60,13 @@ export default function GameShell() {
         e.preventDefault();
         dispatch(startGame());
 
-    }
+    };
 
     const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
         e.preventDefault();
         const formattedUserAnswer = e.target.value.toLowerCase().trim();
         setUserInput(formattedUserAnswer);
-    }
+    };
 
     const checkAndUpdateLevel = (): void => {
         if (sublevel == 5) {
@@ -76,7 +76,7 @@ export default function GameShell() {
         }
 
         dispatch(incrementSubLevel());
-    }
+    };
 
 
     const handleCheckAnswer = (e: React.KeyboardEvent<HTMLInputElement>): void => {
@@ -90,7 +90,7 @@ export default function GameShell() {
 
         }
 
-    }
+    };
 
     return (
         <div className={dashboard.questionSegment}>
@@ -121,5 +121,5 @@ export default function GameShell() {
             </>}
         </div>
 
-    )
+    );
 }   

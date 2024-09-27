@@ -12,7 +12,7 @@ export async function GET(
     let username:string = params.user;
    
     //query returns an array of objects from users db
-    const users: {username: string}[] = await prisma.$queryRaw`SELECT username from users where username = ${username}`;
+    const users: {username: string}[] = await prisma.$queryRaw`SELECT username from jeopardy_users where username = ${username}`;
     
     let status: number;
 

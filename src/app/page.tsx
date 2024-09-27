@@ -1,7 +1,7 @@
 
-import GameShell from './components/GameShell'
-import GameDetails from './components/GameDetails'
-import dashboard from './dashboard.module.css'
+import GameShell from './components/GameShell';
+import GameDetails from './components/GameDetails';
+import dashboard from './dashboard.module.css';
 
 export default function Home() {
   return (
@@ -9,5 +9,5 @@ export default function Home() {
       <GameShell />
       <GameDetails />
     </main>
-  )
+  );
 }

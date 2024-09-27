@@ -16,7 +16,7 @@ export default function Login() {
         if(loggedIn) {
             router.push('/');
         }
-    }, [loggedIn, router])
+    }, [loggedIn, router]);
 
     const handleFields = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const newValue: string = e.target.value;
@@ -31,7 +31,7 @@ export default function Login() {
             default:
                 break;
         }
-    }
+    };
 
     const handleLogin = async (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -45,7 +45,7 @@ export default function Login() {
         const data: {loginAccepted: boolean} = await response.json();
         setLogin(data.loginAccepted);
         setLoginAttempt(true);
-    }
+    };
 
 
 
@@ -63,5 +63,5 @@ export default function Login() {
             <button className='activeButton' type='submit' disabled={!username || !password}>Login</button>
             <p>Don&apos;t have an account?<u><Link href={{ pathname: '/login', query: { entry: 'signup' } }}>Sign Up</Link></u></p>
         </form>
-    )
+    );
 }

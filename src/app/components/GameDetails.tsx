@@ -1,5 +1,5 @@
 
-'use client'
+'use client';
 import dashboard from '../dashboard.module.css';
 import '../../app/globals.css';
 import Image from 'next/image';
@@ -36,5 +36,5 @@ export default function GameDetails() {
                 <h3 className={sublevel == 5 ? 'active' :'white'}>Question 5</h3>
             </div>
         </div>
-    )
+    );
 }

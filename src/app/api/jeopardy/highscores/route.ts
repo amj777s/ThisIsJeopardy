@@ -13,7 +13,7 @@ export async function GET(
     return NextResponse.json(
         highscores,
         { status: 200 }
-    )
+    );
 };  
 
 export async function POST(
